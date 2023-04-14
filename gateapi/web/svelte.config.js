@@ -15,6 +15,10 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		alias: {
+			'$/*': './src/*',
+			'$static/*': './static/*',
+		},
 	},
 }
 
