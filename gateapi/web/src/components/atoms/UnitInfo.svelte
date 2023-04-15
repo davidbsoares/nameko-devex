@@ -7,7 +7,7 @@
 	$: isItemSelected = value === icon
 </script>
 
-<li>
+<div class="flex-[1_0_195px]">
 	<input
 		type="radio"
 		id={icon}
@@ -18,7 +18,7 @@
 	/>
 	<label
 		for={icon}
-		class="flex items-center justify-center flex-1 gap-3 px-6 py-5 border border-gray-400 border-solid rounded cursor-pointer"
+		class="flex items-center justify-center gap-3 px-6 py-5 border border-gray-400 border-solid rounded cursor-pointer"
 		class:bg-[#F3F1FE]={isItemSelected}
 		class:text-[#3F25C8]={isItemSelected}
 		class:font-bold={isItemSelected}
@@ -27,4 +27,4 @@
 
 		<span class="text-base">{label}</span>
 	</label>
-</li>
+</div>

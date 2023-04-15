@@ -2,13 +2,31 @@
 	import type { HTMLInputType } from '$/types'
 
 	export let label: string
-	export let prefix: boolean = false
-	export let suffix: boolean = false
+	export let prefix = false
+	export let suffix = false
 	export let value: string
 	export let type: HTMLInputType
+	export let small = false
+	export let disableFlex = false
+
+	function formatDate() {
+		var d = new Date(),
+			month = '' + (d.getMonth() + 1),
+			day = '' + d.getDate(),
+			year = d.getFullYear()
+
+		if (month.length < 2) month = '0' + month
+		if (day.length < 2) day = '0' + day
+
+		return [year, month, day].join('-')
+	}
 </script>
 
-<div class="flex flex-col gap-1 flex-1">
+<div
+	class="flex flex-col gap-1 justify-end"
+	class:flex-[1_1_140px]={!disableFlex && small}
+	class:flex-[1_1_180px]={!disableFlex && !small}
+>
 	<label for={label} class="block font-medium text-gray-700">{label}</label>
 	<div class="relative rounded-md shadow-sm">
 		{#if prefix}
@@ -36,7 +54,10 @@
 			class="focus:ring-indigo-500 focus:border-indigo-500 block w-full text-base border-gray-300 rounded-md"
 			class:pl-9={prefix}
 			class:pr-12={suffix}
+			class:h-[41.6px]={type === 'date'}
+			class:text-sm={type === 'date'}
 			bind:value
+			min={formatDate()}
 		/>
 		{#if suffix}
 			<span

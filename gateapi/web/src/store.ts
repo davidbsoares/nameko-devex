@@ -1,6 +1,10 @@
-import { writable } from 'svelte/store'
+import { writable, type Writable } from 'svelte/store'
 
-export const property = writable({
+export type PropertyFormType = {
+	[key: string]: string
+}
+
+export const property: Writable<PropertyFormType> = writable({
 	propertyName: '',
 	address: '',
 	type: '',

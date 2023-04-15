@@ -6,9 +6,14 @@
 	export let icon: IconOptions
 	export let label: string
 	export let options: { value: string; label: string }[]
+	export let small: boolean = true
 </script>
 
-<div class="flex flex-col gap-1 flex-1">
+<div
+	class="flex flex-col gap-1 justify-end"
+	class:flex-[1_1_140px]={small}
+	class:flex-[1_1_180px]={!small}
+>
 	<label for={label} class="block font-medium text-gray-700">{label}</label>
 	<div class="relative rounded-md shadow-sm">
 		<div
